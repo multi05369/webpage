@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    min-height: 100vh;
+    background: linear-gradient(#d8b88e , #ac6d26);
+    overflow-x: hidden;
+}
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+header .logo{
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+header ul li a{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+}
+header ul li a:hover,
+header ul li a.active
+{
+    background: #fff;
+    color: #d8b88e;
+}
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #ac6d26, transparent);
+    z-index: 1000;
+}
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+section img#mountain_behind{
+    z-index: 0;
+}
+section img#mountain_front{
+    z-index: 10;
+}
+#text{
+    position: absolute;
+    right: -350px;
+    z-index: 9;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 10vw;
+}
+#btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #d8b88e;
+    z-index: 5;
+    font-size: 2em;
+    transform: translateY(100px);
+}
+.sec{
+    z-index: 5000;
+    position: relative;
+    padding: 100px;
+    background: #ac6d26;
+
+}
+.sec h2{
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.sec ul{
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    text-align: center;
+}
+#list{
+    list-style: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+.name{
+    font-size: 3vw;
+}
+a{
+    font-size: 22px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: rgb(87, 54, 23);
+}
+a:hover{
+    background: #fff;
+    color: #ac6d26;
+}

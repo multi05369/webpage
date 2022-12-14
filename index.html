@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">WNB</a>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+    <section>
+        <img src="images/mountain_front.jpg" id="mountain_front">
+        <h2 id="text">Welcome</h2>
+        <a href="#sec" id="btn">Explore</a>
+        <img src="images/mountain_behind.jpg" id="mountain_behind">
+    </section>
+    <div class="sec" id="sec">
+        <h2>Game List</h2>
+        <ul id="list">
+
+        </ul>
+    </div>
+    <script>
+        let mountain_behind = document.getElementById('mountain_behind')
+        let text = document.getElementById('text')
+        let btn = document.getElementById('btn')
+        let mountain_front = document.getElementById('mountain_front')
+        let header = document.querySelector('header')
+
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            mountain_behind.style.top = value * 0.5 +'px';
+            mountain_front.style.top = value * 0 + 'px';
+            text.style.marginRight = value * 2.5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            header.style.top = value * 0.5 +'px';
+        })  
+
+        fetch('https://gamertocoder.garena.co.th/api/minigames')
+        .then(Response => {
+            if (Response.status !== 200){
+                return Response.status
+            }
+            return Response.json()
+        })
+        .then((data) => {
+    if (typeof data == 'number') {
+        alert(data)
+    } else{
+        for (let i = 0; i < data.length; i++) {
+            const currentData = data[i]
+            const listItem = document.createElement('li')
+            listItem.classList.add('card')
+            const genre_array = currentData.genre
+            let genre_string = genre_array[0]
+            if (genre_array.length > 1) {
+                for (let j = 1; j < genre_array.length; j++) {
+                    genre_string = genre_string + ',' + genre_array[j]
+                }
+            }
+            const html =
+                '<div class="name" onclick="changeName(' + currentData.name +')">  Name: ' + currentData.name + '</div>'
+                + '<img src="' + currentData.icon + ' "/>'
+                + '<div>Category: ' + genre_string + '</div>'
+                + '<div class="detail">' + currentData.description + '</div>'
+                + '<a href="' + currentData.icon + '">คลิกเพื่อดูรูปภาพ</a>'
+            html.trim()
+            listItem.innerHTML = html
+            document.getElementById('list').appendChild(listItem)
+        }
+    }
+})
+    </script>
+</body>
+</html>
